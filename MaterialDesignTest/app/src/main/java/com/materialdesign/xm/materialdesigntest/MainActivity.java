@@ -55,8 +55,6 @@ public class MainActivity extends ActionBarActivity {
 
         setStatusBar();
 
-        // EventBus.getDefault().register(this);
-
         ButterKnife.bind(this);
 
         if (toolbar != null)
@@ -125,12 +123,6 @@ public class MainActivity extends ActionBarActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        //EventBus.getDefault().unregister(this);
-        super.onDestroy();
     }
 
     private void setStatusBar() {
