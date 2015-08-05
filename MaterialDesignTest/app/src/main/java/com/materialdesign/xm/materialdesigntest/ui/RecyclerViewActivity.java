@@ -4,9 +4,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.materialdesign.xm.materialdesigntest.R;
@@ -69,32 +73,6 @@ public class RecyclerViewActivity extends BaseActivity {
         recycleview.setLayoutManager(linearLayoutManager);
         recycleview.setAdapter(new RecyclerViewAdapter(this));
 
-        recycleview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            private int currentStatus = RecyclerView.SCROLL_STATE_IDLE;
-
-            private int lastdy = 0;
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-
-                LinearLayoutManager linearLayoutManager1 = (LinearLayoutManager) recyclerView.getLayoutManager();
-                int firstvisibleItemPosition = linearLayoutManager1.findFirstCompletelyVisibleItemPosition();
-                if (firstvisibleItemPosition == 0 && (dy > lastdy)) {//第一个可见,并且向下滑动列表
-                    lastdy = dy;
-                } else {
-
-                }
-                super.onScrolled(recyclerView, dx, dy);
-
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                currentStatus = newState;
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-        });
-
         swiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -106,4 +84,41 @@ public class RecyclerViewActivity extends BaseActivity {
         });
     }
 
+    public static final int MENUITEMID_LISTVIEW = 0;
+    public static final int MENUITEMID_GridView = 1;
+    public static final int MENUITEMID_StaggeView = 2;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, MENUITEMID_LISTVIEW, 0, "ListView").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER |
+                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        menu.add(0, MENUITEMID_GridView, 0, "GridView").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER |
+                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        menu.add(0, MENUITEMID_StaggeView, 0, "StaggeView").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER |
+                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case MENUITEMID_LISTVIEW://ListView
+                //设置RecyclerView
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recycleview.setLayoutManager(linearLayoutManager);
+                break;
+            case MENUITEMID_GridView://GridView
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+                gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+                recycleview.setLayoutManager(gridLayoutManager);
+                break;
+            case MENUITEMID_StaggeView://瀑布流
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                recycleview.setLayoutManager(staggeredGridLayoutManager);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
