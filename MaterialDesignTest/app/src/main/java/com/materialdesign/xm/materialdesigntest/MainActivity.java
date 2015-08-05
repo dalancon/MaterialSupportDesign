@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity {
 
         setStatusBar();
 
-       // EventBus.getDefault().register(this);
+        // EventBus.getDefault().register(this);
 
         ButterKnife.bind(this);
 
@@ -207,6 +207,9 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * TabLayout的数据实体
+     */
     private class TabBean {
         public String title;
 
