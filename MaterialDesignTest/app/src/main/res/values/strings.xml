@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MaterialDesignTest</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_addtab">AddTab</string>
+    <string name="action_deletetab">DeleteTab</string>
+</resources>

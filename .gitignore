@@ -1,0 +1,8 @@
+﻿bin
+gradle
+.gradle
+.idea
+.class
+*.lock
+*.class
+*.dex
