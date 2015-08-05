@@ -124,7 +124,7 @@ public class RecyclerViewActivity extends BaseActivity {
                 return true;
             case MENUITEMID_StaggeView://瀑布流
                 toolbar.setTitle("StaggeredGridLayoutManager");
-                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(staggeredGridLayoutManager);
                 recycleview.setAdapter(new StaggeredRecyclerViewAdapter(RecyclerViewActivity.this));
                 return true;

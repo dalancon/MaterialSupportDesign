@@ -2,11 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="3dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="3dp"
-    android:background="@android:color/holo_orange_dark">
+    android:layout_margin="3dp"
+    android:background="#482779">
 
     <TextView
         android:id="@+id/tv"
