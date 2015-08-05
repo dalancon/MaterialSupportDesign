@@ -29,7 +29,7 @@ public class RecyclerViewCardViewItemAdapter extends RecyclerView.Adapter<Recycl
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = mInflater.inflate(R.layout.recycler_cardview_item_layout, null, false);
+        View view = mInflater.inflate(R.layout.recycler_cardview_item_layout, viewGroup, false);
         return new MyViewHolder(view);
     }
 
