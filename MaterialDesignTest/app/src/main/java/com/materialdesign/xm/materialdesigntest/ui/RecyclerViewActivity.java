@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.materialdesign.xm.materialdesigntest.R;
 import com.materialdesign.xm.materialdesigntest.adapter.RecyclerViewAdapter;
+import com.materialdesign.xm.materialdesigntest.adapter.StaggeredRecyclerViewAdapter;
 import com.materialdesign.xm.materialdesigntest.base.BaseActivity;
 
 import butterknife.Bind;
@@ -122,6 +123,7 @@ public class RecyclerViewActivity extends BaseActivity {
                 toolbar.setTitle("StaggeredGridLayoutManager");
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(staggeredGridLayoutManager);
+                recycleview.setAdapter(new StaggeredRecyclerViewAdapter(RecyclerViewActivity.this));
                 break;
         }
         return super.onOptionsItemSelected(item);
