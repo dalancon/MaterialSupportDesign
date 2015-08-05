@@ -1,5 +1,6 @@
 package com.materialdesign.xm.materialdesigntest;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,8 +19,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.materialdesign.xm.materialdesigntest.EventBean.AppBarLayoutOffsetChangeEvent;
+import com.materialdesign.xm.materialdesigntest.base.BaseActivity;
 import com.materialdesign.xm.materialdesigntest.fragment.RecycleViewCardViewItemFragment;
 import com.materialdesign.xm.materialdesigntest.fragment.RecycleViewFragment;
+import com.materialdesign.xm.materialdesigntest.ui.RecyclerViewActivity;
 import com.materialdesign.xm.materialdesigntest.util.SystemBarTintManager;
 
 import java.util.ArrayList;
@@ -29,7 +33,7 @@ import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -52,8 +56,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setStatusBar();
 
         ButterKnife.bind(this);
 
@@ -125,16 +127,6 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    private void setStatusBar() {
-        // 创建状态栏的管理实例
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        // 激活状态栏设置
-        tintManager.setStatusBarTintEnabled(true);
-        // 激活导航栏设置
-        tintManager.setNavigationBarTintEnabled(true);
-
-        tintManager.setTintColor(getResources().getColor(R.color.colorPrimary));
-    }
 
     private class MyTabLayoutAdapter extends FragmentPagerAdapter {
 
@@ -172,7 +164,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_navigation, menu);
         return true;
     }
 
@@ -180,11 +172,12 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         switch (id) {
+            case R.id.action_recyclerview:
+                Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                MainActivity.this.startActivity(intent);
+                return true;
+
             case R.id.action_addtab:
                 tabs.add(new TabBean("addTAB", RecycleViewFragment.class));
                 adapter.notifyDataSetChanged();//必须先调用这个方法，不然会报错adapter content changed ,but not call notifyDataSetChanged()

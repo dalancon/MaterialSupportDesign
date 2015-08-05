@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_recyclerview"
+        android:orderInCategory="100"
+        android:title="@string/action_recyclerview"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_addtab"
+        android:orderInCategory="101"
+        android:title="@string/action_addtab"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_deletetab"
+        android:orderInCategory="102"
+        android:title="@string/action_deletetab"
+        app:showAsAction="never" />
+</menu>
