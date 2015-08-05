@@ -63,6 +63,9 @@ public class RecyclerViewActivity extends BaseActivity {
         if (toolbar != null) {
             toolbar.setTitle(TAG);
             setSupportActionBar(toolbar);
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayUseLogoEnabled(false);
         }
 
         swiperefreshlayout.setColorSchemeResources(android.R.color.holo_red_dark, android.R.color.holo_green_dark,
@@ -112,19 +115,19 @@ public class RecyclerViewActivity extends BaseActivity {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(linearLayoutManager);
-                break;
+                return true;
             case MENUITEMID_GridView://GridView
                 toolbar.setTitle("GridLayoutManager");
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
                 gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(gridLayoutManager);
-                break;
+                return true;
             case MENUITEMID_StaggeView://瀑布流
                 toolbar.setTitle("StaggeredGridLayoutManager");
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(staggeredGridLayoutManager);
                 recycleview.setAdapter(new StaggeredRecyclerViewAdapter(RecyclerViewActivity.this));
-                break;
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

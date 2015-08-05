@@ -3,6 +3,7 @@ package com.materialdesign.xm.materialdesigntest.base;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.materialdesign.xm.materialdesigntest.R;
 import com.materialdesign.xm.materialdesigntest.util.SystemBarTintManager;
@@ -27,5 +28,15 @@ public class BaseActivity extends AppCompatActivity {
         tintManager.setNavigationBarTintEnabled(true);
 
         tintManager.setTintColor(getResources().getColor(R.color.colorPrimary));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
