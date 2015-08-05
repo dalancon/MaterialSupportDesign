@@ -67,9 +67,11 @@ public class RecyclerViewActivity extends BaseActivity {
         swiperefreshlayout.setColorSchemeResources(android.R.color.holo_red_dark, android.R.color.holo_green_dark,
                 android.R.color.holo_blue_light, android.R.color.holo_orange_dark);
 
+        toolbar.setTitle("LinearLayoutManager");
         //设置RecyclerView
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recycleview.setHasFixedSize(true);
         recycleview.setLayoutManager(linearLayoutManager);
         recycleview.setAdapter(new RecyclerViewAdapter(this));
 
@@ -104,17 +106,20 @@ public class RecyclerViewActivity extends BaseActivity {
 
         switch (item.getItemId()) {
             case MENUITEMID_LISTVIEW://ListView
+                toolbar.setTitle("LinearLayoutManager");
                 //设置RecyclerView
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(linearLayoutManager);
                 break;
             case MENUITEMID_GridView://GridView
+                toolbar.setTitle("GridLayoutManager");
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
                 gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(gridLayoutManager);
                 break;
             case MENUITEMID_StaggeView://瀑布流
+                toolbar.setTitle("StaggeredGridLayoutManager");
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 recycleview.setLayoutManager(staggeredGridLayoutManager);
                 break;

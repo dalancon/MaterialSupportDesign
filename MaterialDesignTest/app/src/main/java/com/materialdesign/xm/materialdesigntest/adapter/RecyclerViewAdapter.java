@@ -29,8 +29,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = mInflater.inflate(R.layout.recycleritem_layout, null, false);
-
+        //inflate方法的第二个参数一定要写viewGroup，不然item的宽度是固定的。并不等于屏幕宽度
+        View view = mInflater.inflate(R.layout.recycleritem_layout, viewGroup, false);
         return new MyViewHolder(view);
     }
 
