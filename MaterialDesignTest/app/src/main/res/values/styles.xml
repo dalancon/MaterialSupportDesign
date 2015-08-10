@@ -6,7 +6,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/accent_material_dark</item>
-        <item name="colorAccent">@color/accent_material_dark</item>
+        <item name="colorAccent">@color/accent_material_light</item>
 
         <!-- toolbar Style-->
         <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>

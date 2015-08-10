@@ -22,6 +22,7 @@ import com.materialdesign.xm.materialdesigntest.EventBean.AppBarLayoutOffsetChan
 import com.materialdesign.xm.materialdesigntest.base.BaseActivity;
 import com.materialdesign.xm.materialdesigntest.fragment.RecycleViewCardViewItemFragment;
 import com.materialdesign.xm.materialdesigntest.fragment.RecycleViewFragment;
+import com.materialdesign.xm.materialdesigntest.fragment.TextInputLayoutFragment;
 import com.materialdesign.xm.materialdesigntest.ui.RecyclerViewActivity;
 import com.materialdesign.xm.materialdesigntest.util.SystemBarTintManager;
 
@@ -66,7 +67,7 @@ public class MainActivity extends BaseActivity {
 
         tabs.add(new TabBean("TAB1", RecycleViewFragment.class));
         tabs.add(new TabBean("TAB2", RecycleViewCardViewItemFragment.class));
-        tabs.add(new TabBean("TAB3", RecycleViewFragment.class));
+        tabs.add(new TabBean("TAB3", TextInputLayoutFragment.class));
 
         //移动toolbar到屏幕的最顶部 并移出toolbar.getHeight()的距离
         //toolbar.animate().translationY(-1 * toolbar.getHeight());

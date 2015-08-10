@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.materialdesign.xm.materialdesigntest.R;
@@ -21,9 +22,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private LayoutInflater mInflater = null;
 
+    private OnItemClickListener mOnItemClickListener = null;
+
     public RecyclerViewAdapter(Context context) {
         this.mContext = context;
         mInflater = LayoutInflater.from(mContext);
+    }
+
+    public void setmOnItemClickListener(OnItemClickListener listener) {
+        this.mOnItemClickListener = listener;
     }
 
 
@@ -35,13 +42,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(MyViewHolder myViewHolder, final int i) {
         myViewHolder.tv.setText("   RecyclerView   " + i);
+
+        myViewHolder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.click(i);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 50;
+        return 15;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -49,9 +63,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Bind(R.id.tv)
         TextView tv;
 
+        @Bind(R.id.rootView)
+        LinearLayout rootView;
+
         public MyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    /**
+     * itemclick 回调
+     */
+    public static interface OnItemClickListener {
+        public void click(int position);
     }
 }
